@@ -37,16 +37,18 @@ class HourlyForecastAdapter :
     class HourlyForecastViewHolder(private val binding: HourlyItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun loadData(hourlyItem: HourlyDTO, nowString: String?, iconUrl: String) = with(binding) {
-            time.text = nowString ?: parseHour(hourlyItem.unixTime).toString()
+            time.text = nowString ?: parseHour(hourlyItem.unixTime)
             temp.text = kelvinToFahrenheit(hourlyItem.temp).roundToInt().toString()
             Picasso.get().load(iconUrl).into(binding.icon)
         }
 
-        private fun parseHour(unixTime: Long): Int {
+        private fun parseHour(unixTime: Long): String {
             val date = Date(unixTime * 1000)
             val calendar = Calendar.getInstance()
             calendar.time = date
-            return calendar.get(Calendar.HOUR_OF_DAY)
+            var hour = calendar.get(Calendar.HOUR_OF_DAY).toString()
+            if (hour.length == 1) hour = "0$hour"
+            return hour
         }
 
         private fun kelvinToFahrenheit(K: Double): Double {
@@ -55,7 +57,7 @@ class HourlyForecastAdapter :
     }
 
     fun addData(forecastList: List<HourlyDTO>) {
-        this.forecastList = forecastList
+        this.forecastList = forecastList.subList(0, 24)
         notifyDataSetChanged()
     }
 }

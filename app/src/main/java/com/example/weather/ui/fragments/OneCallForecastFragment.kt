@@ -1,13 +1,16 @@
 package com.example.weather.ui.fragments
 
+import android.content.res.Resources
 import android.location.Geocoder
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.weather.R
 import com.example.weather.databinding.ForecastFragmentBinding
 import com.example.weather.ui.adapters.DailyForecastAdapter
 import com.example.weather.ui.adapters.HourlyForecastAdapter
@@ -61,6 +64,12 @@ class OneCallForecastFragment : Fragment() {
 
             hourlyForecastAdapter.addData(result.hourly)
             dailyForecastAdapter.addData(result.daily)
+            setBackGroundColor(
+                result.current.weather[0].main,
+                result.current.unixTime,
+                result.current.sunrise,
+                result.current.sunset
+            )
         })
     }
 
@@ -91,5 +100,43 @@ class OneCallForecastFragment : Fragment() {
             Calendar.SATURDAY -> "Saturday"
             else -> "You done goofed"
         }
+    }
+
+    private fun setBackGroundColor(
+        mainWeather: String,
+        unixTime: Long,
+        sunriseUnixTime: Long,
+        sunsetUnixTime: Long
+    ) {
+        val timeOfDay = timeOfDay(unixTime, sunriseUnixTime, sunsetUnixTime)
+        val stormy = listOf("Thunderstorm", "Drizzle", "Rain", "Squall", "Tornado")
+        val cloudy =
+            listOf("Clouds", "Snow", "Mist", "Smoke", "Haze", "Dust", "Fog", "Sand", "Dust", "Ash")
+        var backgroundColor = 0
+        if (timeOfDay == "d") {
+            backgroundColor = when (mainWeather) {
+                "Clear" -> R.color.sunny
+                in stormy -> R.color.rainy
+                in cloudy -> R.color.cloudy
+                else -> 0
+            }
+        } else if (timeOfDay == "n") {
+            backgroundColor =
+                if (mainWeather == "Clear") R.color.night_clear else R.color.night_cloudy
+        }
+        binding.forecastLayout.setBackgroundColor(
+            ContextCompat.getColor(
+                requireContext(),
+                backgroundColor
+            )
+        )
+    }
+
+    private fun timeOfDay(unixTime: Long, sunriseUnixTime: Long, sunsetUnixTime: Long): String {
+        val current = Date(unixTime * 1000)
+        val sunrise = Date(sunriseUnixTime * 1000)
+        val sunset = Date(sunsetUnixTime * 1000)
+
+        return if (current > sunrise && current < sunset) "d" else "n"
     }
 }

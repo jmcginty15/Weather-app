@@ -63,7 +63,7 @@ class DailyForecastAdapter : RecyclerView.Adapter<DailyForecastAdapter.DailyFore
     }
 
     fun addData(forecastList: List<DailyDTO>) {
-        this.forecastList = forecastList
+        this.forecastList = forecastList.subList(1, forecastList.size)
         notifyDataSetChanged()
     }
 }
