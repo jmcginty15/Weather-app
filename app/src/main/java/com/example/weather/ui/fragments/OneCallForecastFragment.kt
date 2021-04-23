@@ -1,6 +1,5 @@
 package com.example.weather.ui.fragments
 
-import android.content.res.Resources
 import android.location.Geocoder
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -40,6 +39,7 @@ class OneCallForecastFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.hourlyRecycler.apply {
             layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)

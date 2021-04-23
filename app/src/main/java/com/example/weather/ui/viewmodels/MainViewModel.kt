@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.weather.data.models.fivedaythreehour.FiveDayThreeHourDTO
 import com.example.weather.data.models.onecall.OneCallDTO
 import com.example.weather.data.repositories.WeatherRepository
+import com.example.weather.ui.CITY_LIST
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -14,10 +15,6 @@ import io.reactivex.schedulers.Schedulers
 class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val disposable = CompositeDisposable()
     private val weatherRepository = WeatherRepository()
-
-    init {
-        getOneCallForecast(39.048328, -95.67804)
-    }
 
     val fiveDayThreeHourForecast: LiveData<FiveDayThreeHourDTO>
         get() = _fiveDayThreeHourForecast
@@ -48,7 +45,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         )
     }
 
-    private fun getOneCallForecast(latitude: Double, longitude: Double) {
+    fun getOneCallForecast(latitude: Double, longitude: Double) {
         disposable.add(
             weatherRepository.getOneCallForecast(latitude, longitude).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -70,5 +67,14 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     fun setCurrentWeatherModel(currentWeatherModel: CurrentWeatherModel) {
         _currentWeatherModel.value = currentWeatherModel
+    }
+
+    private fun lookUpCoordinates(
+        cityName: String,
+        stateId: String,
+        countryId: String
+    ): CoordinatesModel {
+        for (city in CITY_LIST) if (city.name == cityName && city.state == stateId && city.country == countryId) return city.coordinates
+        return CoordinatesModel(0.0, 0.0)
     }
 }

@@ -62,7 +62,7 @@ dependencies {
     // For control over item selection of both touch and mouse driven selection
     implementation "androidx.recyclerview:recyclerview-selection:$recyclerview_version"
 
-    def room_version = "2.2.6"
+    def room_version = "2.3.0"
 
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
@@ -71,7 +71,7 @@ dependencies {
 
 
     // RxJava support for Room
-    implementation "androidx.room:room-rxjava2:2.2.6"
+    implementation "androidx.room:room-rxjava2:$room_version"
     implementation group: 'io.reactivex.rxjava2', name: 'rxjava', version: '2.2.16'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
 
@@ -84,6 +84,10 @@ dependencies {
     // Picasso
     def picasso_version = "2.71828"
     implementation "com.squareup.picasso:picasso:$picasso_version"
+
+    // Location
+    def location_version = "18.0.0"
+    implementation "com.google.android.gms:play-services-location:$location_version"
 
     // Nav graph dependencies
     def nav_version = "2.3.5"
