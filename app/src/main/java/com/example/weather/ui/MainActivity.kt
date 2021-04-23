@@ -31,15 +31,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
 
-        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-        getLastLocation()
-
         jsonFile = resources.openRawResource(R.raw.city_list)
         val reader = BufferedReader(jsonFile.reader())
         val type = object : TypeToken<List<CityModel>>() {}.type
         CITY_LIST = GsonBuilder().enableComplexMapKeySerialization().create().fromJson(reader, type)
 
         mViewModel = ViewModelProvider(this).get(MainViewModel(application)::class.java)
+
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+        getLastLocation()
     }
 
     override fun onRequestPermissionsResult(
@@ -79,19 +79,17 @@ class MainActivity : AppCompatActivity() {
 
     @SuppressLint("MissingPermission")
     private fun getLastLocation() {
-        if (checkPermissions()) {
-            if (isLocationEnabled()) {
-                mFusedLocationClient.getCurrentLocation(
-                    LocationRequest.PRIORITY_HIGH_ACCURACY,
-                    null
-                ).addOnCompleteListener(this) { task ->
-                    val location: Location? = task.result
-                    if (location == null) requestNewLocationData()
-                    else mViewModel.getOneCallForecast(location.latitude, location.longitude)
-                }
-            } else {
-                println("Location not enabled")
+        if (checkPermissions() && isLocationEnabled()) {
+            mFusedLocationClient.getCurrentLocation(
+                LocationRequest.PRIORITY_HIGH_ACCURACY,
+                null
+            ).addOnCompleteListener(this) { task ->
+                val location: Location? = task.result
+                if (location == null) requestNewLocationData()
+                else mViewModel.getOneCallForecast(location.latitude, location.longitude)
             }
+        } else {
+            mViewModel.getOneCallForecast(39.047344, -95.675158)
         }
     }
 
