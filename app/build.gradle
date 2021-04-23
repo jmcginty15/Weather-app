@@ -69,7 +69,6 @@ dependencies {
     // optional - Test helpers
     testImplementation "androidx.room:room-testing:$room_version"
 
-
     // RxJava support for Room
     implementation "androidx.room:room-rxjava2:$room_version"
     implementation group: 'io.reactivex.rxjava2', name: 'rxjava', version: '2.2.16'
