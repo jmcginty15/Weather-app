@@ -89,7 +89,7 @@ class MainActivity : AppCompatActivity() {
                 else mViewModel.getOneCallForecast(location.latitude, location.longitude)
             }
         } else {
-            mViewModel.getOneCallForecast(39.047344, -95.675158)
+            mViewModel.getOneCallForecast(-90.0, 0.0)
         }
     }
 
