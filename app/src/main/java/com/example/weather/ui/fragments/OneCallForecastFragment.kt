@@ -117,7 +117,7 @@ class OneCallForecastFragment : Fragment() {
             R.string.dms,
             degrees.roundToInt().toString(),
             minutes.roundToInt().toString(),
-            "%.3f".format(seconds),
+            seconds.roundToInt().toString(),
             direction
         )
     }
