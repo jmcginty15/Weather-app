@@ -17,7 +17,9 @@ import com.example.weather.ui.viewmodels.CurrentWeatherModel
 import com.example.weather.ui.viewmodels.MainViewModel
 import java.text.DecimalFormat
 import java.util.*
+import kotlin.math.abs
 import kotlin.math.floor
+import kotlin.math.roundToInt
 
 class OneCallForecastFragment : Fragment() {
     private lateinit var binding: ForecastFragmentBinding
@@ -78,39 +80,44 @@ class OneCallForecastFragment : Fragment() {
         val formatter = DecimalFormat()
         formatter.maximumFractionDigits = 3
         val geocoder = Geocoder(requireContext(), Locale.getDefault())
-        val address = geocoder.getFromLocation(
-            formatter.format(latitude).toDouble(),
-            formatter.format(longitude).toDouble(),
-            1
-        )[0]
+        val address = try {
+            geocoder.getFromLocation(
+                formatter.format(latitude).toDouble(),
+                formatter.format(longitude).toDouble(),
+                1
+            )[0]
+        } catch (e: Throwable) {
+            null
+        }
 
-        return if (address.locality == null) {
-            if (address.subAdminArea == null) {
-                if (address.adminArea == null) {
-                    if (address.countryName == null) formatLatLon(latitude, longitude)
-                    else address.countryName
-                } else address.adminArea
-            } else address.subAdminArea
-        } else address.locality
+        return if (address == null) formatLatLon(latitude, longitude)
+        else {
+            if (address.locality == null) {
+                if (address.subAdminArea == null) {
+                    if (address.adminArea == null) address.countryName
+                    else address.adminArea
+                } else address.subAdminArea
+            } else address.locality
+        }
     }
 
     private fun formatLatLon(latitude: Double, longitude: Double): String {
         val latDir = if (latitude < 0) "S" else "N"
         val longDir = if (longitude < 0) "W" else "E"
-        return "${formatDMS(latitude, latDir)}, ${formatDMS(longitude, longDir)}"
+        return "${formatDMS(latitude, latDir)}\n${formatDMS(longitude, longDir)}"
     }
 
     private fun formatDMS(decimalValue: Double, direction: String): String {
-        val degrees = floor(decimalValue)
-        val leftover = (decimalValue - degrees) * 60.0
+        val degrees = floor(abs(decimalValue))
+        val leftover = (abs(decimalValue) - degrees) * 60.0
         val minutes = floor(leftover)
         val seconds = (leftover - minutes) * 60.0
 
         return resources.getString(
             R.string.dms,
-            degrees.toString(),
-            minutes.toString(),
-            "%.3".format(seconds.toString()),
+            degrees.roundToInt().toString(),
+            minutes.roundToInt().toString(),
+            "%.3f".format(seconds),
             direction
         )
     }

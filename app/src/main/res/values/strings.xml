@@ -4,5 +4,5 @@
     <string name="today">TODAY</string>
     <string name="now">Now</string>
     <string name="icon_url">https://openweathermap.org/img/wn/%s@2x.png</string>
-    <string name="dms">%s° %s\' %s" %s</string>
+    <string name="dms">%s° %s\' %s\" %s</string>
 </resources>
