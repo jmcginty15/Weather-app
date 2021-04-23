@@ -82,7 +82,14 @@ class OneCallForecastFragment : Fragment() {
             formatter.format(longitude).toDouble(),
             1
         )[0]
-        return address.locality
+
+        return if (address.locality == null) {
+            if (address.subAdminArea == null) {
+                if (address.adminArea == null) {
+                    address.countryName
+                } else address.adminArea
+            } else address.subAdminArea
+        } else address.locality
     }
 
     private fun parseDay(unixTime: Long): String {

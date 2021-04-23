@@ -87,12 +87,7 @@ class MainActivity : AppCompatActivity() {
                 ).addOnCompleteListener(this) { task ->
                     val location: Location? = task.result
                     if (location == null) requestNewLocationData()
-                    else {
-                        println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
-                        println(location.latitude)
-                        println(location.longitude)
-                        mViewModel.getOneCallForecast(location.latitude, location.longitude)
-                    }
+                    else mViewModel.getOneCallForecast(location.latitude, location.longitude)
                 }
             } else {
                 println("Location not enabled")
