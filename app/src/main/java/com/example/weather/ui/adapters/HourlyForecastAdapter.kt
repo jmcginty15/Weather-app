@@ -38,7 +38,10 @@ class HourlyForecastAdapter :
         RecyclerView.ViewHolder(binding.root) {
         fun loadData(hourlyItem: HourlyDTO, nowString: String?, iconUrl: String) = with(binding) {
             time.text = nowString ?: parseHour(hourlyItem.unixTime)
-            temp.text = kelvinToFahrenheit(hourlyItem.temp).roundToInt().toString()
+            temp.text = itemView.context.getString(
+                R.string.degrees,
+                kelvinToFahrenheit(hourlyItem.temp).roundToInt().toString()
+            )
             Picasso.get().load(iconUrl).into(binding.icon)
         }
 
