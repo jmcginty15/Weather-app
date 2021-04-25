@@ -70,13 +70,4 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     fun setCurrentWeatherModel(currentWeatherModel: CurrentWeatherModel) {
         _currentWeatherModel.value = currentWeatherModel
     }
-
-    private fun lookUpCoordinates(
-        cityName: String,
-        stateId: String,
-        countryId: String
-    ): CoordinatesModel {
-        for (city in CITY_LIST) if (city.name == cityName && city.state == stateId && city.country == countryId) return city.coordinates
-        return CoordinatesModel(0.0, 0.0)
-    }
 }
