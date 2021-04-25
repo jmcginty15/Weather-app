@@ -9,6 +9,7 @@
     <color name="black_transparent">#88000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="white_transparent">#88ffffff</color>
+    <color name="white_transparenter">#44ffffff</color>
     <color name="transparent">#00000000</color>
     <color name="sunny">#4599c3</color>
     <color name="rainy">#556f81</color>

@@ -8,5 +8,21 @@
     <fragment
         android:id="@+id/destination_forecast_fragment"
         android:name="com.example.weather.ui.fragments.OneCallForecastFragment"
-        tools:layout="@layout/forecast_fragment" />
+        tools:layout="@layout/forecast_fragment">
+
+        <action
+            android:id="@+id/action_forecast_fragment_to_city_select_fragment"
+            app:destination="@+id/destination_city_select_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/destination_city_select_fragment"
+        android:name="com.example.weather.ui.fragments.CitySelectFragment"
+        tools:layout="@layout/city_select_fragment">
+
+        <action
+            android:id="@+id/city_select_fragment_pop"
+            app:popUpTo="@id/destination_city_select_fragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

@@ -78,7 +78,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     @SuppressLint("MissingPermission")
-    private fun getLastLocation() {
+    fun getLastLocation() {
         if (checkPermissions() && isLocationEnabled()) {
             mFusedLocationClient.getCurrentLocation(
                 LocationRequest.PRIORITY_HIGH_ACCURACY,

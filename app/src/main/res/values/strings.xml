@@ -5,4 +5,7 @@
     <string name="now">Now</string>
     <string name="icon_url">https://openweathermap.org/img/wn/%s@2x.png</string>
     <string name="dms">%s° %s\' %s\" %s</string>
+    <string name="change_location">Change location</string>
+    <string name="use_current_location">Use current location</string>
+    <string name="back">Back</string>
 </resources>

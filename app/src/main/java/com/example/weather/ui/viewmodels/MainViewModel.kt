@@ -15,6 +15,8 @@ import io.reactivex.schedulers.Schedulers
 class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val disposable = CompositeDisposable()
     private val weatherRepository = WeatherRepository()
+    var backgroundColor = 0
+    var dataReady = false
 
     val fiveDayThreeHourForecast: LiveData<FiveDayThreeHourDTO>
         get() = _fiveDayThreeHourForecast
