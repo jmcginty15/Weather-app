@@ -97,12 +97,12 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".25" />
+        app:layout_constraintGuide_percent=".3333" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/glh75"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".75" />
+        app:layout_constraintGuide_percent=".6667" />
 </androidx.constraintlayout.widget.ConstraintLayout>
