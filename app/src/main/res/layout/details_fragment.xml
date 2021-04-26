@@ -1,0 +1,758 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/details_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/back_button"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/small_margin"
+        android:layout_marginVertical="0dp"
+        android:text="@string/back"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/glh90"
+        app:layout_constraintVertical_bias="0"
+        app:strokeColor="@color/white"
+        tools:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/city_name"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="@dimen/small_margin"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:autoSizeMaxTextSize="30sp"
+        android:autoSizeMinTextSize="1sp"
+        android:autoSizeStepGranularity="1sp"
+        android:autoSizeTextType="uniform"
+        android:gravity="bottom|center"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/main_weather"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1"
+        tools:text="Topeka"
+        tools:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/main_weather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/smaller_margin"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/glh15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1"
+        tools:text="Sunny"
+        tools:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:padding="@dimen/small_margin"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/glh22"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/glh15"
+        tools:text="Today: Currently clear sky and 50°. High today is 66°. Low tonight is 41°."
+        tools:textColor="@color/black" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:paddingHorizontal="@dimen/small_margin"
+        app:layout_constraintBottom_toTopOf="@id/glh90"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/glh22">
+
+        <TextView
+            android:id="@+id/latitude_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/smaller_margin"
+            android:text="@string/latitude"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+            android:textColor="@color/white_transparent"
+            app:layout_constraintBottom_toTopOf="@id/latitude_value"
+            app:layout_constraintEnd_toStartOf="@id/glv50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0"
+            tools:textColor="@color/black_transparent" />
+
+        <TextView
+            android:id="@+id/latitude_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/smaller_margin"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/glh10"
+            app:layout_constraintEnd_toStartOf="@id/glv50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/latitude_label"
+            app:layout_constraintVertical_bias="0"
+            tools:text="@string/lat_placeholder"
+            tools:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/longitude_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/small_margin"
+            android:paddingVertical="@dimen/smaller_margin"
+            android:text="@string/longitude"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+            android:textColor="@color/white_transparent"
+            app:layout_constraintBottom_toTopOf="@id/longitude_value"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/glv50"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0"
+            tools:textColor="@color/black_transparent" />
+
+        <TextView
+            android:id="@+id/longitude_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/small_margin"
+            android:paddingBottom="@dimen/smaller_margin"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/glh10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/glv50"
+            app:layout_constraintTop_toBottomOf="@id/latitude_label"
+            app:layout_constraintVertical_bias="0"
+            tools:text="@string/long_placeholder"
+            tools:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/sunrise_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/smaller_margin"
+            android:text="@string/sunrise"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+            android:textColor="@color/white_transparent"
+            app:layout_constraintBottom_toTopOf="@id/sunrise_value"
+            app:layout_constraintEnd_toStartOf="@id/glv50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/glh10"
+            app:layout_constraintVertical_bias="0"
+            tools:textColor="@color/black_transparent" />
+
+        <TextView
+            android:id="@+id/sunrise_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/smaller_margin"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/glh20"
+            app:layout_constraintEnd_toStartOf="@id/glv50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sunrise_label"
+            app:layout_constraintVertical_bias="0"
+            tools:text="06:05"
+            tools:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/sunset_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/small_margin"
+            android:paddingTop="@dimen/smaller_margin"
+            android:text="@string/sunset"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+            android:textColor="@color/white_transparent"
+            app:layout_constraintBottom_toTopOf="@id/sunset_value"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/glv50"
+            app:layout_constraintTop_toBottomOf="@id/glh10"
+            app:layout_constraintVertical_bias="0"
+            tools:textColor="@color/black_transparent" />
+
+        <TextView
+            android:id="@+id/sunset_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/small_margin"
+            android:paddingBottom="@dimen/smaller_margin"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/glh20"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/glv50"
+            app:layout_constraintTop_toBottomOf="@id/sunset_label"
+            app:layout_constraintVertical_bias="0"
+            tools:text="19:50"
+            tools:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/moonrise_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/smaller_margin"
+            android:text="@string/moonrise"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+            android:textColor="@color/white_transparent"
+            app:layout_constraintBottom_toTopOf="@id/moonrise_value"
+            app:layout_constraintEnd_toStartOf="@id/glv50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/glh20"
+            app:layout_constraintVertical_bias="0"
+            tools:textColor="@color/black_transparent" />
+
+        <TextView
+            android:id="@+id/moonrise_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/smaller_margin"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/glh30"
+            app:layout_constraintEnd_toStartOf="@id/glv50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/moonrise_label"
+            app:layout_constraintVertical_bias="0"
+            tools:text="18:05"
+            tools:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/moonset_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/small_margin"
+            android:paddingTop="@dimen/smaller_margin"
+            android:text="@string/moonset"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+            android:textColor="@color/white_transparent"
+            app:layout_constraintBottom_toTopOf="@id/moonset_value"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/glv50"
+            app:layout_constraintTop_toBottomOf="@id/glh20"
+            app:layout_constraintVertical_bias="0"
+            tools:textColor="@color/black_transparent" />
+
+        <TextView
+            android:id="@+id/moonset_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/small_margin"
+            android:paddingBottom="@dimen/smaller_margin"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/glh30"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/glv50"
+            app:layout_constraintTop_toBottomOf="@id/moonset_label"
+            app:layout_constraintVertical_bias="0"
+            tools:text="03:48"
+            tools:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/wind_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/smaller_margin"
+            android:text="@string/wind"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+            android:textColor="@color/white_transparent"
+            app:layout_constraintBottom_toTopOf="@id/wind_value"
+            app:layout_constraintEnd_toStartOf="@id/glv50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/glh30"
+            app:layout_constraintVertical_bias="0"
+            tools:textColor="@color/black_transparent" />
+
+        <TextView
+            android:id="@+id/wind_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/smaller_margin"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/glh40"
+            app:layout_constraintEnd_toStartOf="@id/glv50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/wind_label"
+            app:layout_constraintVertical_bias="0"
+            tools:text="NW 15 mph"
+            tools:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/gusts_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/small_margin"
+            android:paddingTop="@dimen/smaller_margin"
+            android:text="@string/gusts"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+            android:textColor="@color/white_transparent"
+            app:layout_constraintBottom_toTopOf="@id/gusts_value"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/glv50"
+            app:layout_constraintTop_toBottomOf="@id/glh30"
+            app:layout_constraintVertical_bias="0"
+            tools:textColor="@color/black_transparent" />
+
+        <TextView
+            android:id="@+id/gusts_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/small_margin"
+            android:paddingBottom="@dimen/smaller_margin"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/glh40"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/glv50"
+            app:layout_constraintTop_toBottomOf="@id/gusts_label"
+            app:layout_constraintVertical_bias="0"
+            tools:text="25 mph"
+            tools:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/humidity_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/smaller_margin"
+            android:text="@string/humidity"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+            android:textColor="@color/white_transparent"
+            app:layout_constraintBottom_toTopOf="@id/humidity_value"
+            app:layout_constraintEnd_toStartOf="@id/glv50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/glh40"
+            app:layout_constraintVertical_bias="0"
+            tools:textColor="@color/black_transparent" />
+
+        <TextView
+            android:id="@+id/humidity_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/smaller_margin"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/glh50"
+            app:layout_constraintEnd_toStartOf="@id/glv50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/humidity_label"
+            app:layout_constraintVertical_bias="0"
+            tools:text="38%"
+            tools:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/feels_like_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/small_margin"
+            android:paddingTop="@dimen/smaller_margin"
+            android:text="@string/feels_like"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+            android:textColor="@color/white_transparent"
+            app:layout_constraintBottom_toTopOf="@id/feels_like_value"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/glv50"
+            app:layout_constraintTop_toBottomOf="@id/glh40"
+            app:layout_constraintVertical_bias="0"
+            tools:textColor="@color/black_transparent" />
+
+        <TextView
+            android:id="@+id/feels_like_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/small_margin"
+            android:paddingBottom="@dimen/smaller_margin"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/glh50"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/glv50"
+            app:layout_constraintTop_toBottomOf="@id/feels_like_label"
+            app:layout_constraintVertical_bias="0"
+            tools:text="59°"
+            tools:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/dew_point_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/smaller_margin"
+            android:text="@string/dew_point"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+            android:textColor="@color/white_transparent"
+            app:layout_constraintBottom_toTopOf="@id/dew_point_value"
+            app:layout_constraintEnd_toStartOf="@id/glv50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/glh50"
+            app:layout_constraintVertical_bias="0"
+            tools:textColor="@color/black_transparent" />
+
+        <TextView
+            android:id="@+id/dew_point_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/smaller_margin"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/glh60"
+            app:layout_constraintEnd_toStartOf="@id/glv50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dew_point_label"
+            app:layout_constraintVertical_bias="0"
+            tools:text="45°"
+            tools:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/pressure_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/small_margin"
+            android:paddingTop="@dimen/smaller_margin"
+            android:text="@string/pressure"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+            android:textColor="@color/white_transparent"
+            app:layout_constraintBottom_toTopOf="@id/pressure_value"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/glv50"
+            app:layout_constraintTop_toBottomOf="@id/glh50"
+            app:layout_constraintVertical_bias="0"
+            tools:textColor="@color/black_transparent" />
+
+        <TextView
+            android:id="@+id/pressure_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/small_margin"
+            android:paddingBottom="@dimen/smaller_margin"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/glh60"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/glv50"
+            app:layout_constraintTop_toBottomOf="@id/pressure_label"
+            app:layout_constraintVertical_bias="0"
+            tools:text="30.1 inHg"
+            tools:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/visibility_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/smaller_margin"
+            android:text="@string/visibility"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+            android:textColor="@color/white_transparent"
+            app:layout_constraintBottom_toTopOf="@id/visibility_value"
+            app:layout_constraintEnd_toStartOf="@id/glv50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/glh60"
+            app:layout_constraintVertical_bias="0"
+            tools:textColor="@color/black_transparent" />
+
+        <TextView
+            android:id="@+id/visibility_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/smaller_margin"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/glh70"
+            app:layout_constraintEnd_toStartOf="@id/glv50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/visibility_label"
+            app:layout_constraintVertical_bias="0"
+            tools:text="8 mi"
+            tools:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/uv_index_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/small_margin"
+            android:paddingTop="@dimen/smaller_margin"
+            android:text="@string/uv_index"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+            android:textColor="@color/white_transparent"
+            app:layout_constraintBottom_toTopOf="@id/uv_index_value"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/glv50"
+            app:layout_constraintTop_toBottomOf="@id/glh60"
+            app:layout_constraintVertical_bias="0"
+            tools:textColor="@color/black_transparent" />
+
+        <TextView
+            android:id="@+id/uv_index_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/small_margin"
+            android:paddingBottom="@dimen/smaller_margin"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/glh70"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/glv50"
+            app:layout_constraintTop_toBottomOf="@id/uv_index_label"
+            app:layout_constraintVertical_bias="0"
+            tools:text="7"
+            tools:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/cloud_coverage_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/smaller_margin"
+            android:text="@string/cloud_coverage"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+            android:textColor="@color/white_transparent"
+            app:layout_constraintBottom_toTopOf="@id/cloud_coverage_value"
+            app:layout_constraintEnd_toStartOf="@id/glv50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/glh70"
+            app:layout_constraintVertical_bias="0"
+            tools:textColor="@color/black_transparent" />
+
+        <TextView
+            android:id="@+id/cloud_coverage_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/smaller_margin"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/glv50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cloud_coverage_label"
+            app:layout_constraintVertical_bias="0"
+            tools:text="45%"
+            tools:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/chance_of_precipitation_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/small_margin"
+            android:paddingTop="@dimen/smaller_margin"
+            android:text="@string/chance_of_precipitation"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+            android:textColor="@color/white_transparent"
+            app:layout_constraintBottom_toTopOf="@id/chance_of_precipitation_value"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/glv50"
+            app:layout_constraintTop_toBottomOf="@id/glh70"
+            app:layout_constraintVertical_bias="0"
+            tools:textColor="@color/black_transparent" />
+
+        <TextView
+            android:id="@+id/chance_of_precipitation_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/small_margin"
+            android:paddingBottom="@dimen/smaller_margin"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/glv50"
+            app:layout_constraintTop_toBottomOf="@id/chance_of_precipitation_label"
+            app:layout_constraintVertical_bias="0"
+            tools:text="45%"
+            tools:textColor="@color/black" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="@id/glh10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/glh10"
+            tools:background="@color/black" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="@id/glh20"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/glh20"
+            tools:background="@color/black" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="@id/glh30"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/glh30"
+            tools:background="@color/black" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="@id/glh40"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/glh40"
+            tools:background="@color/black" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="@id/glh50"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/glh50"
+            tools:background="@color/black" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="@id/glh60"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/glh60"
+            tools:background="@color/black" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="@id/glh70"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/glh70"
+            tools:background="@color/black" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glh10"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".125" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glh20"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".25" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glh30"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".375" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glh40"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".50" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glh50"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".625" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glh60"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".75" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glh70"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".875" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glv50"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".5" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/glh15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/glh15"
+        tools:background="@color/black" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/glh22"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/glh22"
+        tools:background="@color/black" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/glh90"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/glh90"
+        tools:background="@color/black" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glh15"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".15" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glh22"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".25" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glh90"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".87" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,6 +15,7 @@ class DailyDTO(
     @SerializedName("humidity") val humidity: Int,
     @SerializedName("dew_point") val dewPoint: Double,
     @SerializedName("wind_speed") val windSpeed: Double,
+    @SerializedName("wind_gust") val windGust: Double,
     @SerializedName("wind_deg") val windDirection: Int,
     @SerializedName("weather") val weather: List<WeatherDTO>,
     @SerializedName("clouds") val cloudCoverage: Int,

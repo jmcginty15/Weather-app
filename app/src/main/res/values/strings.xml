@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Weather</string>
     <string name="degrees">%s°</string>
+    <string name="percentage">%s%%</string>
+    <string name="in_hg">%s inHg</string>
+    <string name="miles">%s mi</string>
     <string name="today">TODAY</string>
     <string name="now">Now</string>
     <string name="icon_url">https://openweathermap.org/img/wn/%s@2x.png</string>
@@ -11,4 +14,24 @@
     <string name="back">Back</string>
     <string name="select_a_city">Select a city…</string>
     <string name="city_not_found">City not found</string>
+    <string name="details">Details</string>
+    <string name="description">Today: Currently %s and %s°. High today is %s°. Low tonight is %s°.</string>
+    <string name="latitude">LATITUDE</string>
+    <string name="longitude">LONGITUDE</string>
+    <string name="sunrise">SUNRISE</string>
+    <string name="sunset">SUNSET</string>
+    <string name="moonrise">MOONRISE</string>
+    <string name="moonset">MOONSET</string>
+    <string name="humidity">HUMIDITY</string>
+    <string name="feels_like">FEELS LIKE</string>
+    <string name="wind">WIND</string>
+    <string name="gusts">GUSTS</string>
+    <string name="dew_point">DEW POINT</string>
+    <string name="pressure">PRESSURE</string>
+    <string name="visibility">VISIBILITY</string>
+    <string name="uv_index">UV INDEX</string>
+    <string name="cloud_coverage">CLOUD COVERAGE</string>
+    <string name="chance_of_precipitation">CHANCE OF PRECIP.</string>
+    <string name="lat_placeholder">39° 2\' 54\" N</string>
+    <string name="long_placeholder">95° 40\' 41\" W</string>
 </resources>

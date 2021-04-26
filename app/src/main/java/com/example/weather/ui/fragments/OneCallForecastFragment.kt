@@ -78,6 +78,8 @@ class OneCallForecastFragment : Fragment() {
             null
         }
 
+        println(formatLatLon(latitude, longitude))
+
         return if (address == null) formatLatLon(latitude, longitude)
         else {
             if (address.locality == null) {

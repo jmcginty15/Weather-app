@@ -13,6 +13,10 @@
         <action
             android:id="@+id/action_forecast_fragment_to_city_select_fragment"
             app:destination="@+id/destination_city_select_fragment" />
+
+        <action
+            android:id="@+id/action_forecast_fragment_to_details_fragment"
+            app:destination="@+id/destination_details_fragment" />
     </fragment>
 
     <fragment
@@ -23,6 +27,17 @@
         <action
             android:id="@+id/city_select_fragment_pop"
             app:popUpTo="@id/destination_city_select_fragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/destination_details_fragment"
+        android:name="com.example.weather.ui.fragments.DetailsFragment"
+        tools:layout="@layout/details_fragment">
+
+        <action
+            android:id="@+id/details_fragment_pop"
+            app:popUpTo="@id/destination_details_fragment"
             app:popUpToInclusive="true" />
     </fragment>
 </navigation>

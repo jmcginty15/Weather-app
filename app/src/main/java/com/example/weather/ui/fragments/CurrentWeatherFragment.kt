@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.NavHostFragment
 import com.example.weather.R
 import com.example.weather.databinding.CurrentWeatherFragmentBinding
 import com.example.weather.ui.viewmodels.MainViewModel
@@ -38,9 +39,15 @@ class CurrentWeatherFragment : Fragment() {
             binding.highTemp.text = kelvinToFahrenheit(model.hiTemp).roundToInt().toString()
             binding.lowTemp.text = kelvinToFahrenheit(model.loTemp).roundToInt().toString()
         })
+        binding.detailsButton.setOnClickListener { navigateToDetails() }
     }
 
     private fun kelvinToFahrenheit(K: Double): Double {
         return (K - 273.15) * 1.8 + 32.0
+    }
+
+    private fun navigateToDetails() {
+        val navController = NavHostFragment.findNavController(this)
+        navController.navigate(R.id.action_forecast_fragment_to_details_fragment)
     }
 }

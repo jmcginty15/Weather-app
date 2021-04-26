@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/small_margin"
         android:layout_marginVertical="@dimen/large_margin"
+        android:padding="0dp"
         android:text="@string/back"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
